@@ -9,15 +9,15 @@ import requests
 from io import BytesIO
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
-st.title("Bean Image Classifier")
-st.text("Provide URL of bean Image for image classification")
+st.title("Bean Leaf Image Classifier")
+st.text("Enter bean image url classification (Angular Leaf Spot or Bean Rust or Healthy)")
 
 @st.cache(allow_output_mutation=True)
 def load_model():
   model = tf.keras.models.load_model('/app/models/')
   return model
 
-with st.spinner('Loading Model Into Memory....'):
+with st.spinner('Loading the model....'):
   model = load_model()
 
 classes=['angular_leaf_spot','bean_rust','healthy']
@@ -32,7 +32,7 @@ if path is not None:
     content = requests.get(path).content
 
     st.write("Predicted Class :")
-    with st.spinner('classifying.....'):
+    with st.spinner('please wait.....'):
       label =np.argmax(model.predict(decode_img(content)),axis=1)
       st.write(classes[label[0]])    
     st.write("")

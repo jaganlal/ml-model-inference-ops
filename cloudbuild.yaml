@@ -1,9 +1,9 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/imgwebapp:v1', '.']
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/beanleaf_classification_app:v1', '.']
   timeout: 180s
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/imgwebapp:v1']
+  args: ['push', 'gcr.io/$PROJECT_ID/beanleaf_classification_app:v1']
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: "bash"
   args:
@@ -17,4 +17,4 @@ steps:
   - run
   - --filename=k8s/
   - --location=us-east1-b
-  - --cluster=mlops-project-kube
+  - --cluster=ml-model-inference-op-on-kube
