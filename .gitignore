@@ -2,7 +2,6 @@
 
 ml-env/
 beans/
-models/variables/
 test.zip
 train.zip
 validation.zip
