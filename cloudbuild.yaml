@@ -1,7 +1,7 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/beanleaf_classification_app:v1', '.']
-  timeout: 180s
+  timeout: 1200s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/beanleaf_classification_app:v1']
 - name: 'gcr.io/cloud-builders/gcloud'
