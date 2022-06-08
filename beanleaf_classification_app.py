@@ -17,7 +17,7 @@ def load_model():
   model = tf.keras.models.load_model('/app/models/')
   return model
 
-with st.spinner('Loading the model....'):
+with st.spinner('Loading the model CHANGE 1....'):
   model = load_model()
 
 classes=['angular_leaf_spot','bean_rust','healthy']
