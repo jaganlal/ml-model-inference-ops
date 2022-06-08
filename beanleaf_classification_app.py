@@ -9,7 +9,7 @@ import requests
 from io import BytesIO
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
-st.title("Bean Leaf Image Classifier")
+st.title("Bean Leaf Classifier")
 st.text("Enter bean image url classification (Angular Leaf Spot or Bean Rust or Healthy)")
 
 @st.cache(allow_output_mutation=True)
@@ -17,7 +17,7 @@ def load_model():
   model = tf.keras.models.load_model('/app/models/')
   return model
 
-with st.spinner('Loading the model CHANGE 1....'):
+with st.spinner('Loading the model....'):
   model = load_model()
 
 classes=['angular_leaf_spot','bean_rust','healthy']
@@ -27,7 +27,7 @@ def decode_img(image):
   img = tf.image.resize(img,[224,224])
   return np.expand_dims(img, axis=0)
 
-path = st.text_input('Enter Image URL to Classify.. ','https://beanipm.pbgworks.org/sites/pbg-beanipm7/files/styles/picture_custom_user_wide_1x/public/AngularLeafSpotFig1a.jpg')
+path = st.text_input('Enter Image URL to Classify...','https://beanipm.pbgworks.org/sites/pbg-beanipm7/files/styles/picture_custom_user_wide_1x/public/AngularLeafSpotFig1a.jpg')
 if path is not None:
     content = requests.get(path).content
 
